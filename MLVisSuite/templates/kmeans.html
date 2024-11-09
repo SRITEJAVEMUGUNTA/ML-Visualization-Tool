@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}
+    K-Means
+{% endblock %}
+
+{% block name %}
+    K-Means Visualization
+{% endblock %}
+
+{% block graph %}
+    <div id="graph">
+        <canvas id="myChart" width="500" height="500"></canvas>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div style="display: flex; flex-direction: column">
+        <p style="text-align: center">Perform K-Means</p>
+        {% block gdButtons %}
+            <div id="iter_buttons">
+                <button onclick="kMeans(1)">1 iteration</button>
+                <button onclick="kMeans(100_000)">Until convergence</button>
+                <button onclick="reinitializeCentroids()">Reinitialize centroids</button>
+                <button onclick="location.reload()">Reset</button>
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}
+
+{% block info %}
+    <div id='info'>
+        <p id='converged'>Click on the graph to add data points</p>
+        <br/>
+
+        <p>Number of Clusters:</p>
+        <div>
+            <input type="radio" id="twoClusters" name="clusters" value="2" checked>
+            <label>2</label>
+        </div>
+        <div>
+            <input type="radio" id="threeClusters" name="clusters" value="3">
+            <label>3</label>
+        </div>
+        <div>
+            <input type="radio" id="fourClusters" name="clusters" value="4">
+            <label>4</label>
+        </div>
+        <div>
+            <input type="radio" id="fiveClusters" name="clusters" value="5">
+            <label>5</label>
+        </div>
+        <br/>
+
+        <p id='next_step'>Initialize centroids</p>
+    </div>
+{% endblock %}
+
+{% block modalButtonText %}
+    How does K-Means work?
+{% endblock %}
+
+{% block moreInfoModalContent %}
+    <h2 class="modal-title">How K-Means Works</h2>
+    <p>Click on the graph to add points to it. Cluster the points in any manner. The goal here is to color the points
+        such that there are “k” clusters, which is a parameter that is chosen. Run the algorithm and for each iteration
+        watch how first the points are colored based on which cluster (indicated by the stars) it’s closest to and then
+        the clusters are moved to the center of all of the points of its color.</p>
+    <br/>
+    <p>This process is repeated until the algorithm converges, or the clusters stop moving. Depending on the random
+        initialization of the clusters, the final solution may not be the most optimal one, in which case feel free to
+        reinitialize the clusters and rerun the algorithm.</p>
+{% endblock %}

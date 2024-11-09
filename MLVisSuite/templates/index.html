@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <title>ML Visualization Suite</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<div class="menu-links">
+    <a href="/">Home</a>
+    <a href="https://www.sourish.dev">About the Creator</a>
+</div>
+<h1>Machine Learning Algorithm Visualizations</h1>
+<p style="text-align: center">Click one to see it in action!</p>
+<div class="cards">
+
+</div>
+{#<div class="ml-button">#}
+{#    <button>What is Machine Learning?</button>#}
+{#</div>#}
+</body>
+</html>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous"></script>
+<script>
+    const algorithmNames = ['Linear Regression', 'Logistic Regression', 'K-Means']
+    const descriptions = [
+        `Linear Regression is a supervised Machine Learning technique that attempts to predict a continuous value given a set of numerical or categorical inputs. For example, one could try to predict the value of a house given its plot size, the number of bedrooms, color, etc. The algorithm is trained with a set of labeled data points (i.e. each training sample has the information for the inputs and the output). Then, the performance is evaluated on a set of testing data to see if the predicted output is close to the actual output from the dataset.`,
+        `Logistic Regression is another supervised Machine Learning technique that attempts to predict a discrete value given a set of numerical or categorical inputs. For example, one could try to predict the winner of a football game given each team’s seed, total rushing yards, average touchdowns per game, etc. Training is similar to Linear Regression in that each training sample has information for the inputs and the output. The performance is evaluated similarly.`,
+        `K-Means Clustering is an unsupervised Machine Learning technique that “clusters” the data into “k” groups (which is chosen by the user). It does not have labeled training examples and is used to find patterns in the data. An example is image compression, where if k is 30, then the algorithm will cluster the pixel based on color into 30 groups.`
+    ]
+    const ids = ['linreg', 'logreg', 'kmeans']
+    const images = ['LinearRegression.png', 'LogisticRegression.png', 'KMeans.png']
+    for (let i = 0; i < algorithmNames.length; i++) {
+        $(".cards").append(`
+            <div class="card" id="` + ids[i] + `">
+                <h2>` + algorithmNames[i] + `</h2>
+                <img src="/static/images/` + images[i] + `" alt="` + algorithmNames[i] + `"/>
+                <p>` + descriptions[i] + `</p>
+            </div>
+        `)
+        $("#" + ids[i]).click(function () {
+            window.location.href = '/' + ids[i];
+        })
+    }
+</script>
+<style>
+    * {
+        font-family: 'Roboto', sans-serif;
+
+    }
+
+    body {
+        background: #f5f5f5;
+    }
+
+    h1 {
+        margin-top: 5px;
+        text-align: center;
+    }
+
+    .cards {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .card {
+        width: 400px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        margin: 10px;
+        padding: 10px;
+        box-shadow: 0 0 5px grey;
+        border-radius: 10px;
+        background: white;
+    }
+
+    img {
+        width: 100%;
+    }
+
+    .card a {
+        text-decoration: none;
+    }
+
+    .ml-button {
+        display: block;
+        margin: auto;
+    }
+
+    @media only screen and (max-width: 1080px) {
+        h1 {
+            margin-top: 50px;
+        }
+    }
+</style>

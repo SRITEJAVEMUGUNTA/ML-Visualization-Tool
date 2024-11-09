@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/queries.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.4.0/chart.min.js"></script>
+    <link rel="shortcut icon" href="/static/favicon.ico">
+</head>
+<body>
+
+<h1>{% block name %}{% endblock %}</h1>
+<div class="menu-links">
+    <a href="/">Home</a>
+    <a href="https://www.sourish.dev">About the Creator</a>
+</div>
+<img class="hamburger-icon" src="static/images/hamburger-menu.svg" alt="hamburger">
+<div class="mobile-sidebar-nav">
+    <a class="close-sidebar-nav">&times;</a>
+    <a href="/">Home</a>
+    <a href="https://www.sourish.dev">About the Creator</a>
+    <hr style="color: white; width: 95%">
+    <p style="font-size: 2rem; margin-left: 5px; font-weight: bold">Other Algorithms</p>
+    <a href="/linreg">Linear Regression</a>
+    <a href="/logreg">Logistic Regression</a>
+    <a href="/kmeans">K-Means</a>
+</div>
+<div class="algoLinks">
+    <span>Other Algorithms</span>
+    <a href="/linreg">Linear Regression</a>
+    <a href="/logreg">Logistic Regression</a>
+    <a href="/kmeans">K-Means</a>
+</div>
+
+<div class="row">
+    <div class="centerpiece">
+        {% block graph %}{% endblock %}
+
+        {% block content %}{% endblock %}
+        <button id="more-info">{% block modalButtonText %}{% endblock %}</button>
+    </div>
+    {% block info %}{% endblock %}
+</div>
+
+<div id="info-modal">
+    <div id="info-modal-content">
+        {% block moreInfoModalContent %}{% endblock %}
+        <span id="modal-close">&times;</span>
+    </div>
+</div>
+
+</body>
+</html>
+
+<script src="/static/js/script.js"></script>
+<script src="/static/js/chartjs.js"></script>

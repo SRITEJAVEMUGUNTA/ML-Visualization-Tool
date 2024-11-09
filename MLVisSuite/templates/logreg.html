@@ -1,0 +1,57 @@
+{% extends "gdBase.html" %}
+
+{% block title %}
+    Logistic Regression
+{% endblock %}
+
+{% block name %}
+    Logistic Regression Visualization
+{% endblock %}
+
+{% block graph %}
+    <div id="graph">
+        <canvas id="myChart" width="500" height="500"></canvas>
+    </div>
+{% endblock %}
+
+{% block nameOfAlgorithm %}Perform Gradient Descent{% endblock %}
+
+{% block chooseClass %}
+    <p>Choose class: </p>
+    <div>
+        <input type="radio" id="red" name="class" value="0" checked>
+        <label for="male">red</label>
+    </div>
+    <div>
+        <input type="radio" id="blue" name="class" value="1">
+        <label for="female">blue</label>
+    </div>
+    <br/>
+{% endblock %}
+
+{% block gdButtons %}
+    <div id="iter_buttons">
+        <button onclick="gradDesc(1, 'logreg-grad-desc')">1 iteration</button>
+        <button onclick="gradDesc(5, 'logreg-grad-desc')">5 iterations</button>
+        <button onclick="gradDesc(10, 'logreg-grad-desc')">10 iterations</button>
+        <button onclick="gradDesc(100, 'logreg-grad-desc')">100 iterations</button>
+        <button onclick="gradDesc(100_000_000, 'logreg-grad-desc')">Until convergence</button>
+        <button onclick="location.reload()">Reset</button>
+    </div>
+{% endblock %}
+
+{% block modalButtonText %}
+    How does Logistic Regression work?
+{% endblock %}
+
+{% block moreInfoModalContent %}
+    <h2 class="modal-title">How Logistic Regression Works</h2>
+    <p>Click on the graph to add either red or blue points to it. The goal here is to draw a line, either linear or
+        quadratic, that separates the points as best as possible. Then, run the Gradient Descent algorithm to watch how
+        the computer “learns” the line of best fit. A larger number of iterations means the line will make a larger jump
+        towards converging. </p>
+    <br/>
+    <p>The way this works is for each iteration, the “error” of the line (which is the squared sum of the class of each
+        point and its predicted value) is reduced by a little bit. Eventually, the algorithm will converge when the
+        error is as small as it can be.</p>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "gdBase.html" %}
+
+{% block title %}
+    Linear Regression
+{% endblock %}
+
+{% block name %}
+    Linear Regression Visualization
+{% endblock %}
+
+{% block graph %}
+    <div id="graph">
+        <canvas id="myChart" width="500" height="500"></canvas>
+    </div>
+{% endblock %}
+
+{% block gdButtons %}
+    <div id="iter_buttons">
+        <button onclick="gradDesc(1, 'linreg-grad-desc')">1 iteration</button>
+        <button onclick="gradDesc(5, 'linreg-grad-desc')">5 iterations</button>
+        <button onclick="gradDesc(10, 'linreg-grad-desc')">10 iterations</button>
+        <button onclick="gradDesc(100, 'linreg-grad-desc')">100 iterations</button>
+        <button onclick="gradDesc(100_000_000, 'linreg-grad-desc')">Until convergence</button>
+        <button onclick="location.reload()">Reset</button>
+    </div>
+{% endblock %}
+
+{% block modalButtonText %}
+    How does Linear Regression work?
+{% endblock %}
+
+{% block moreInfoModalContent %}
+    <h2 class="modal-title">How Linear Regression Works</h2>
+    <p>Click on the graph to add points to it. The goal is to draw a line that best fits the given data, whether is
+        linear or quadratic. Then, run the Gradient Descent algorithm to watch how the computer “learns” the line of
+        best fit. A larger number of iterations means the line will make a larger jump towards converging. </p>
+    <br/>
+    <p>The way this works is for each iteration, the “error” of the line (which is the squared sum of the distance
+        between each point and its predicted value indicated by the line) is reduced by a little bit. Eventually, the
+        algorithm will converge when the error is as small as it can be.</p>
+{% endblock %}
